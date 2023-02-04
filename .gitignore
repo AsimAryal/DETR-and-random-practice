@@ -234,3 +234,4 @@ fabric.properties
 # Project Specific
 *.csv
 /data_terrain/*/
+/data_intel/*/

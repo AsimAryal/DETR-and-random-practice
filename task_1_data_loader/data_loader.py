@@ -49,7 +49,7 @@ class CustomDataLoader(Dataset):
 
     @staticmethod
     def export_to_csv(filenames_df: pd.DataFrame, save_name: str) -> None:
-        save_name = save_name+".csv" if ".csv" not in save_name else save_name
+        save_name = save_name + ".csv" if ".csv" not in save_name else save_name
         filenames_df.to_csv(save_name, sep=",")
         print(f"{save_name} Saved.")
 
