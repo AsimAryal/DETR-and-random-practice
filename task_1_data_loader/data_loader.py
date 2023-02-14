@@ -4,16 +4,19 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from torch.utils.data import Dataset
+from torch.utils.data import IterableDataset
 
 
-class CustomDataLoader(Dataset):
+class TerrainDataLoader(IterableDataset):
     def __init__(
         self,
         size: int,
         root_dir: Path = Path("C:/Users/asima/PycharmProjects/AAGI_Prac/data_terrain/"),
+        classes=None,
     ):
-        self.classes = ["desert", "green", "cloudy", "water"]
+        self.classes = (
+            ["desert", "green", "cloudy", "water"] if classes is None else classes
+        )
         self.size = size
         self.root_dir = root_dir
         self.folder_sizes = self.check_and_get_folder_sizes(size, self.classes)
@@ -63,7 +66,7 @@ class CustomDataLoader(Dataset):
         return self
 
     def __next__(self):
-        return CustomDataLoader(self.size)
+        return TerrainDataLoader(self.size)
 
 
 #
