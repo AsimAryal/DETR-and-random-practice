@@ -17,4 +17,3 @@ if __name__ == "__main__":
     test_loader = DataLoader(dataset=test_set, batch_size=batch_size, shuffle=True)
     new_set = next(TerrainDataLoader(1000))
     print("Size of new set: ", new_set.__len__())
-    dataset.export_to_csv(dataset.filenames, "filenames")
