@@ -234,5 +234,7 @@ fabric.properties
 # Project Specific
 *.csv
 /data_terrain/*/
-/data_intel/*/
-/data_turbines/
+/data_turbines/*/
+/task_2_transformers/detr_arch.png
+*.png
+*.jpg

@@ -67,13 +67,3 @@ class TerrainDataLoader(IterableDataset):
 
     def __next__(self):
         return TerrainDataLoader(self.size)
-
-
-#
-# print(
-#     (
-#         CustomDataLoader(
-#             Path("C:/Users/asima/PycharmProjects/AAGI_Prac/data_terrain/"), 50
-#         )
-#     )
-# )

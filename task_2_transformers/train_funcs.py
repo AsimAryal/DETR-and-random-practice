@@ -4,7 +4,7 @@ from torch import nn
 from torchinfo import summary
 from torchvision import transforms
 
-from task_2_transformers.data_loader import TransformerDataLoader
+from task_2_transformers.data_loader import TransformerDataSet
 
 
 class SetupTraining:
@@ -19,7 +19,7 @@ class SetupTraining:
         )
 
     def get_data(self):
-        return TransformerDataLoader().get_train_test_loaders(
+        return TransformerDataSet().get_train_test_loaders(
             transform=self.image_transforms, batch_size=self.batch_size
         )
 

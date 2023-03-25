@@ -1,22 +1,23 @@
-from torch.utils.data import DataLoader
-from torchvision import datasets, transforms
+from torch.utils.data import Dataset
+from task_2_transformers.data_utils import get_coco_image_annotation, get_coco_objects
 
 
-class TransformerDataLoader:
-    def get_train_test_loaders(
+class TransformerDataSet(Dataset):
+    def __init__(
         self,
-        transform: transforms.Compose,
-        batch_size: int,
-        train_dir: str = "C:/Users/asima/PycharmProjects/AAGI_Prac/data_intel/train/",
-        test_dir: str = "C:/Users/asima/PycharmProjects/AAGI_Prac/data_intel/val/",
+        train_path="C:/Users/asima/PycharmProjects/AAGI_Prac/data_turbines/annotations/_train_annotations.coco.json",
+        val_path="C:/Users/asima/PycharmProjects/AAGI_Prac/data_turbines/annotations/_val_annotations.coco.json",
     ):
-        train_data = datasets.ImageFolder(train_dir, transform=transform)
-        test_data = datasets.ImageFolder(test_dir, transform=transform)
 
-        class_names = train_data.classes
+        self.train_images, self.train_annotations = get_coco_image_annotation(
+            get_coco_objects(train_path)
+        )
+        self.val_images, self.val_annotations = get_coco_image_annotation(
+            get_coco_objects(val_path)
+        )
 
-        train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
+    def __len__(self):
+        return len(self.train_annotations)
 
-        test_loader = DataLoader(test_data, batch_size=batch_size, shuffle=True)
-
-        return train_loader, test_loader, class_names
+    def __getitem__(self, item):
+        pass
