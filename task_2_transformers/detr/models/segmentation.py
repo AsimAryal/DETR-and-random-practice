@@ -9,8 +9,8 @@ from typing import List, Optional
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch import Tensor
 from PIL import Image
+from torch import Tensor
 
 import task_2_transformers.detr.util.box_ops as box_ops
 from task_2_transformers.detr.util.misc import (

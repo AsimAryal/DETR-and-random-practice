@@ -3,13 +3,13 @@
 Backbone modules.
 """
 from collections import OrderedDict
+from typing import Dict, List
 
 import torch
 import torch.nn.functional as F
 import torchvision
 from torch import nn
 from torchvision.models._utils import IntermediateLayerGetter
-from typing import Dict, List
 
 from task_2_transformers.detr.util.misc import NestedTensor, is_main_process
 
