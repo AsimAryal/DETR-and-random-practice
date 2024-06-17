@@ -7,27 +7,27 @@ import numpy as np
 import torch
 import torch.distributed as dist
 import torch.nn.functional as F
+from detectron2.layers import ShapeSpec
+from detectron2.modeling import META_ARCH_REGISTRY, build_backbone, detector_postprocess
+from detectron2.structures import BitMasks, Boxes, ImageList, Instances, PolygonMasks
+from detectron2.utils.logger import log_first_n
+from fvcore.nn import giou_loss, smooth_l1_loss
 from scipy.optimize import linear_sum_assignment
 from torch import nn
 
-from detectron2.layers import ShapeSpec
-from detectron2.modeling import META_ARCH_REGISTRY, build_backbone, detector_postprocess
-from detectron2.structures import Boxes, ImageList, Instances, BitMasks, PolygonMasks
-from detectron2.utils.logger import log_first_n
-from fvcore.nn import giou_loss, smooth_l1_loss
+from task_2_transformers.detr.datasets.coco import convert_coco_poly_to_mask
 from task_2_transformers.detr.models.backbone import Joiner
 from task_2_transformers.detr.models.detr import DETR, SetCriterion
 from task_2_transformers.detr.models.matcher import HungarianMatcher
 from task_2_transformers.detr.models.position_encoding import PositionEmbeddingSine
-from task_2_transformers.detr.models.transformer import Transformer
 from task_2_transformers.detr.models.segmentation import (
     DETRsegm,
     PostProcessPanoptic,
     PostProcessSegm,
 )
+from task_2_transformers.detr.models.transformer import Transformer
 from task_2_transformers.detr.util.box_ops import box_cxcywh_to_xyxy, box_xyxy_to_cxcywh
 from task_2_transformers.detr.util.misc import NestedTensor
-from task_2_transformers.detr.datasets.coco import convert_coco_poly_to_mask
 
 __all__ = ["Detr"]
 

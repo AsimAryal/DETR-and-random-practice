@@ -9,11 +9,11 @@ from torch import nn
 from task_2_transformers.detr.util import box_ops
 from task_2_transformers.detr.util.misc import (
     NestedTensor,
-    nested_tensor_from_tensor_list,
     accuracy,
     get_world_size,
     interpolate,
     is_dist_avail_and_initialized,
+    nested_tensor_from_tensor_list,
 )
 
 from .backbone import build_backbone

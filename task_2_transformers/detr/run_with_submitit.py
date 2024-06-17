@@ -59,8 +59,9 @@ class Trainer(object):
 
     def checkpoint(self):
         import os
-        import submitit
         from pathlib import Path
+
+        import submitit
 
         self.args.dist_url = get_init_file().as_uri()
         checkpoint_file = os.path.join(self.args.output_dir, "checkpoint.pth")
@@ -71,8 +72,9 @@ class Trainer(object):
         return submitit.helpers.DelayedSubmission(empty_trainer)
 
     def _setup_gpu_args(self):
-        import submitit
         from pathlib import Path
+
+        import submitit
 
         job_env = submitit.JobEnvironment()
         self.args.output_dir = Path(

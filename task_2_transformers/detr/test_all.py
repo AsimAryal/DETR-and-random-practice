@@ -1,20 +1,20 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 import io
 import unittest
-
-import torch
-from torch import nn, Tensor
 from typing import List
 
+import torch
+from hubconf import detr_resnet50, detr_resnet50_panoptic
+from torch import Tensor, nn
+
+from task_2_transformers.detr.models.backbone import Backbone, BackboneBase, Joiner
 from task_2_transformers.detr.models.matcher import HungarianMatcher
 from task_2_transformers.detr.models.position_encoding import (
-    PositionEmbeddingSine,
     PositionEmbeddingLearned,
+    PositionEmbeddingSine,
 )
-from task_2_transformers.detr.models.backbone import Backbone, Joiner, BackboneBase
 from task_2_transformers.detr.util import box_ops
 from task_2_transformers.detr.util.misc import nested_tensor_from_tensor_list
-from hubconf import detr_resnet50, detr_resnet50_panoptic
 
 # onnxruntime requires python 3.5 or above
 try:

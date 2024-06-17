@@ -6,15 +6,15 @@ Mostly copy-paste from https://github.com/pytorch/vision/blob/edfd5a7/references
 The difference is that there is less copy-pasting from pycocotools
 in the end of the file, as python3 can suppress prints with contextlib
 """
-import os
 import contextlib
 import copy
-import numpy as np
-import torch
+import os
 
-from pycocotools.cocoeval import COCOeval
-from pycocotools.coco import COCO
+import numpy as np
 import pycocotools.mask as mask_util
+import torch
+from pycocotools.coco import COCO
+from pycocotools.cocoeval import COCOeval
 
 from task_2_transformers.detr.util.misc import all_gather
 

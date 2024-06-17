@@ -49,8 +49,6 @@ class PatchEmbedding(nn.Module):
         super().__init__()
 
         self.patch_size = patch_size
-
-        # Create a layer to turn an image into patches
         self.patcher = nn.Conv2d(
             in_channels=in_channels,
             out_channels=embedding_dim,
@@ -58,7 +56,6 @@ class PatchEmbedding(nn.Module):
             stride=patch_size,
             padding=0,
         )
-
         # Create a layer to flatten the patch feature maps into a single dimension
         # only flatten the feature map dimensions into a single vector
         self.flatten = nn.Flatten(
@@ -66,16 +63,13 @@ class PatchEmbedding(nn.Module):
             end_dim=3,
         )
 
-    # Define the forward method
     def forward(self, x):
-        # Create assertion to check that inputs are the correct shape
+        # assertion to check that inputs are the correct shape
         image_resolution = x.shape[-1]
         assert image_resolution % self.patch_size == 0, (
             f"Input image size must be divisible by patch size, +"
             f"image shape: {image_resolution}, patch size: {self.patch_size}"
         )
-
-        # Perform the forward pass
         x_patched = self.patcher(x)
         x_flattened = self.flatten(x_patched)
         # Make sure the output shape has the right order

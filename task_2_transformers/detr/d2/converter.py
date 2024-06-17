@@ -2,8 +2,8 @@
 """
 Helper script to convert models trained with the main version of DETR to be used with the Detectron2 version.
 """
-import json
 import argparse
+import json
 
 import numpy as np
 import torch
